@@ -64,7 +64,7 @@ public class SudokuSolver {
 			if (checkValid(board, row, col, curVal)) {
 				board[row][col] = curVal;
 				variables = getVariables(board);
-				if (simpleDFS(board))
+				if (degreeMRV(board))
 					return true;
 				board[row][col] = 0;
 			}
