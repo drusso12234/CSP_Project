@@ -22,11 +22,23 @@ public class Scheduler1 implements Scheduler {
 		return schedule;
 	}
 
-	//TODO
-	//Add degree Heursitic, by counting class frequency
-	//Write solver, should be similar to parts 1&2
-	//Calculate MRV
-	//Write method to check and enforce constraints
+
+	public Map<String, Integer> degreeHeuristic(SchedulingProblem pProblem) {
+		HashMap<ScheduleChoice, Integer> freq = new Map<>();
+		ScheduleChoice[] courses = schedule(pProblem);
+		for (ScheduleChoice course : courses) {
+			if (!m.contains(course)) {
+				freq.put(course, 0);
+			} else {
+				int cur = m.get(course);
+				freq.add(course, cur + 1);
+			}
+		}
+
+		return freq;
+	}
+
+
 	
 	public int[][] setupConstraints(SchedulingProblem pProblem) {
 		int days = 5;
